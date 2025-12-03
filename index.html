@@ -13,191 +13,346 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            background: #f5f5f5;
             color: #333;
             line-height: 1.7;
         }
 
-        .header {
+        .hero {
             background: linear-gradient(135deg, #1a2332 0%, #2d3e5f 100%);
             color: white;
-            padding: 2rem 2rem 3rem;
+            padding: 3rem 2rem;
             text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
             position: relative;
             overflow: hidden;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
-        .header::before {
+        .hero::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="rgba(255,255,255,0.1)"></path></svg>') repeat-x;
+            background-image: 
+                linear-gradient(rgba(26, 35, 50, 0.9), rgba(45, 62, 95, 0.9)),
+                url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1600&h=600&fit=crop');
             background-size: cover;
-            opacity: 0.3;
+            background-position: center;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
         }
 
         .logo-container {
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 1;
+            margin-bottom: 2rem;
         }
 
         .logo-container img {
-            height: 80px;
+            height: 70px;
             filter: brightness(0) invert(1);
         }
 
-        .header h1 {
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 1;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
             font-weight: 600;
         }
 
-        .header .subtitle {
-            font-size: 1.1rem;
+        .hero-subtitle {
+            font-size: 1.2rem;
             opacity: 0.9;
-            margin-bottom: 0.8rem;
-            position: relative;
-            z-index: 1;
-            font-weight: normal;
+            margin-bottom: 2rem;
         }
 
-        .header .gold-accent {
-            color: #c9a961;
+        .route-badges {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .route-badge {
+            background: rgba(201, 169, 97, 0.2);
+            border: 2px solid #c9a961;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-size: 1.1rem;
             font-weight: 600;
+            color: #c9a961;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .route-badge:hover {
+            background: #c9a961;
+            color: white;
+            transform: scale(1.05);
         }
 
         .container {
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
+            margin: -50px auto 0;
+            padding: 0 2rem 3rem;
+            position: relative;
+            z-index: 2;
         }
 
-        .intro-section {
+        .intro-card {
             background: white;
-            border-radius: 15px;
-            padding: 2.5rem;
-            margin: 2rem 0;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-            border-left: 5px solid #8b7355;
-            animation: fadeInUp 0.8s ease;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
         }
 
-        .intro-section h2 {
+        .intro-card h2 {
             color: #2d3e5f;
-            font-size: 1.7rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
             font-weight: 600;
         }
 
-        .intro-section p {
-            color: #4b5563;
+        .intro-card p {
             font-size: 1.05rem;
+            color: #4b5563;
             margin-bottom: 1rem;
         }
 
-        .cities-grid {
+        .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #8b7355 0%, #a89075 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .tabs-container {
+            margin: 3rem 0;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+        }
+
+        .tab {
+            background: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #6b7280;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .tab:hover {
+            background: #f3f4f6;
+            color: #2d3e5f;
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, #2d3e5f 0%, #4a5f8a 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(45, 62, 95, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .city-detail {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .city-hero {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .city-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+        }
+
+        .city-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 30px;
+            z-index: 1;
+        }
+
+        .city-code {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #c9a961;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            letter-spacing: 5px;
+        }
+
+        .city-name {
+            font-size: 1.5rem;
+            color: white;
+            margin-top: 0.5rem;
+        }
+
+        .city-body {
+            padding: 3rem;
+        }
+
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 2rem;
             margin: 2rem 0;
         }
 
-        .city-card {
-            background: white;
+        .pros, .cons {
+            padding: 1.5rem;
             border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: fadeInUp 0.8s ease;
         }
 
-        .city-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 35px rgba(45, 62, 95, 0.25);
+        .pros {
+            background: linear-gradient(135deg, #f0f9f4 0%, #e6f7ed 100%);
+            border-left: 5px solid #5a9a7a;
         }
 
-        .city-header {
-            background: linear-gradient(135deg, #2d3e5f 0%, #4a5f8a 100%);
-            color: white;
-            padding: 2rem;
-            text-align: center;
+        .cons {
+            background: linear-gradient(135deg, #fef5f5 0%, #fee2e2 100%);
+            border-left: 5px solid #b36b6b;
+        }
+
+        .pros h4, .cons h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #2d3e5f;
+        }
+
+        .pros ul, .cons ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .pros li, .cons li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
             position: relative;
-            overflow: hidden;
         }
 
-        .city-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .city-header.helsinki {
-            background: linear-gradient(135deg, #2c5f7a 0%, #4a90a4 100%);
-        }
-
-        .city-header.milan {
-            background: linear-gradient(135deg, #8b4c4c 0%, #b36b6b 100%);
-        }
-
-        .city-header.prague {
-            background: linear-gradient(135deg, #8b7355 0%, #a89075 100%);
-        }
-
-        .city-header h3 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .city-header .airport-code {
-            font-size: 2.8rem;
+        .pros li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #5a9a7a;
             font-weight: bold;
-            color: #c9a961;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            letter-spacing: 3px;
         }
 
-        .city-content {
+        .cons li::before {
+            content: '✗';
+            position: absolute;
+            left: 0;
+            color: #b36b6b;
+            font-weight: bold;
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, #f5ede0 0%, #e8dcc8 100%);
             padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border-left: 5px solid #8b7355;
         }
 
-        .highlight-box {
-            background: #f8f9fa;
-            border-left: 4px solid #4a5f8a;
-            padding: 1rem;
-            margin: 1rem 0;
-            border-radius: 5px;
+        .insight-box strong {
+            color: #2d3e5f;
+            font-size: 1.1rem;
         }
 
-        .highlight-box.positive {
-            background: #f0f9f4;
-            border-left-color: #5a9a7a;
+        .comparison-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
         }
 
-        .highlight-box.negative {
-            background: #fef5f5;
-            border-left-color: #b36b6b;
+        .comparison-section h2 {
+            color: #2d3e5f;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            text-align: center;
         }
 
         .comparison-table {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            margin: 2rem 0;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
             overflow-x: auto;
-            animation: fadeInUp 0.8s ease;
         }
 
         table {
@@ -209,13 +364,14 @@
         th {
             background: linear-gradient(135deg, #2d3e5f 0%, #4a5f8a 100%);
             color: white;
-            padding: 1rem;
+            padding: 1.2rem;
             text-align: left;
             font-weight: 600;
+            font-size: 0.95rem;
         }
 
         td {
-            padding: 1rem;
+            padding: 1.2rem;
             border-bottom: 1px solid #e5e7eb;
         }
 
@@ -223,388 +379,485 @@
             background: #f9fafb;
         }
 
-        .conclusion-section {
-            background: linear-gradient(135deg, #2d3e5f 0%, #3d5278 100%);
-            color: white;
-            border-radius: 15px;
-            padding: 2.5rem;
+        .toggle-section {
+            background: white;
+            border-radius: 20px;
             margin: 2rem 0;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-            animation: fadeInUp 0.8s ease;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         }
 
-        .conclusion-section h2 {
-            color: #c9a961;
-            margin-bottom: 1.5rem;
-            font-size: 1.9rem;
+        .toggle-header {
+            background: #f8f9fa;
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .toggle-header:hover {
+            background: #e9ecef;
+        }
+
+        .toggle-header h3 {
+            color: #2d3e5f;
+            font-size: 1.3rem;
             font-weight: 600;
         }
 
-        .recommendation-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .recommendation-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            padding: 1.5rem;
+        .toggle-icon {
+            font-size: 1.5rem;
+            color: #8b7355;
             transition: transform 0.3s ease;
         }
 
-        .recommendation-card:hover {
-            transform: scale(1.05);
-            background: rgba(255, 255, 255, 0.15);
+        .toggle-section.open .toggle-icon {
+            transform: rotate(180deg);
         }
 
-        .recommendation-card h3 {
+        .toggle-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .toggle-section.open .toggle-content {
+            max-height: 2000px;
+        }
+
+        .toggle-body {
+            padding: 2rem;
+        }
+
+        .conclusion-card {
+            background: linear-gradient(135deg, #2d3e5f 0%, #3d5278 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .conclusion-card h2 {
             color: #c9a961;
-            margin-bottom: 0.5rem;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .strategy-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .strategy-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .strategy-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #c9a961;
+        }
+
+        .strategy-card h3 {
+            color: #c9a961;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .footer {
             background: #1a1a2e;
             color: white;
             text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
         }
 
-        .footer a {
-            color: #c9a961;
-            text-decoration: none;
-            transition: opacity 0.3s ease;
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
         }
 
-        .footer a:hover {
-            opacity: 0.8;
+        .skill-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #8b7355;
+            transition: all 0.3s ease;
         }
 
-        .tag {
-            display: inline-block;
-            background: #8b7355;
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin: 0.2rem;
-            font-weight: 500;
-        }
-
-        .emoji {
-            font-size: 1.3rem;
-            margin-right: 0.3rem;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .skill-item:hover {
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transform: translateX(5px);
         }
 
         @media (max-width: 768px) {
-            .header h1 {
+            .hero h1 {
                 font-size: 1.8rem;
             }
-            
-            .cities-grid {
+
+            .pros-cons {
                 grid-template-columns: 1fr;
             }
-            
-            table {
-                font-size: 0.9rem;
-            }
-            
-            th, td {
-                padding: 0.7rem;
-            }
-        }
 
-        .key-insight {
-            background: linear-gradient(135deg, #f5ede0 0%, #e8dcc8 100%);
-            color: #2d3e5f;
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin: 1.5rem 0;
-            font-weight: 500;
-            box-shadow: 0 4px 15px rgba(139, 115, 85, 0.2);
-            border-left: 4px solid #8b7355;
-        }
+            .tabs {
+                flex-direction: column;
+            }
 
-        .methodology {
-            background: #f8fafc;
-            border-radius: 15px;
-            padding: 2rem;
-            margin: 2rem 0;
-            border: 2px solid #e2e8f0;
+            .tab {
+                width: 100%;
+            }
+
+            .city-code {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <div class="logo-container">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/STARLUX_Airlines_logo.svg/2560px-STARLUX_Airlines_logo.svg.png" alt="STARLUX Airlines Logo">
+    <div class="hero">
+        <div class="hero-content">
+            <div class="logo-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/STARLUX_Airlines_logo.svg/2560px-STARLUX_Airlines_logo.svg.png" alt="STARLUX Airlines Logo">
+            </div>
+            <h1>2026 歐洲航點分析</h1>
+            <p class="hero-subtitle">從旅客經驗到航空策略的完整評估</p>
+            <div class="route-badges">
+                <div class="route-badge">赫爾辛基 HEL</div>
+                <div class="route-badge">米蘭 MXP</div>
+                <div class="route-badge">布拉格 PRG</div>
+            </div>
         </div>
-        <h1>2026 歐洲航點分析</h1>
-        <p class="subtitle">赫爾辛基（HEL）・米蘭（MXP）・布拉格（PRG）</p>
-        <p class="subtitle">International Affairs Coordinator Portfolio | <span class="gold-accent">旅客經驗 × 航空策略</span></p>
     </div>
 
     <div class="container">
-        <div class="intro-section">
-            <h2>📍 研究背景</h2>
-            <p>身為一位經常飛行的旅客，我在歐洲交換期間走訪超過 20 個國家，今年累積近 20 次飛行經驗。這份分析把我實際觀察到的旅客行為、轉機經驗，跟航空公司會考慮的商業因素結合在一起。</p>
+        <div class="intro-card">
+            <h2>📍 為什麼做這個分析？</h2>
+            <p>身為一位經常且愛好飛行的旅客，我在歐洲交換期間走訪超過 20 個國家，今年累積近 20 次飛行經驗。這份分析把我實際觀察到的旅客行為、轉機經驗，跟航空公司會考慮的商業因素結合在一起。</p>
             
-            <div class="key-insight">
-                💡 分析重點：從實際飛行經驗出發，用國際事務協調員的角度評估三個候選航點的市場潛力與風險。
-            </div>
-
-            <div class="methodology">
-                <h3 style="color: #2d3e5f; margin-bottom: 1rem;">分析架構</h3>
-                <span class="tag">市場需求評估</span>
-                <span class="tag">競爭者分析</span>
-                <span class="tag">航權與時刻帶</span>
-                <span class="tag">旅客行為觀察</span>
-                <span class="tag">風險評估</span>
-            </div>
-        </div>
-
-        <h2 style="color: white; text-align: center; margin: 3rem 0 2rem; font-size: 2rem;">
-            <span class="emoji">🌍</span>三大候選航點深度分析
-        </h2>
-
-        <div class="cities-grid">
-            <div class="city-card">
-                <div class="city-header helsinki">
-                    <div class="airport-code">HEL</div>
-                    <h3>赫爾辛基</h3>
-                    <p>北歐轉機樞紐</p>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <span class="stat-number">20+</span>
+                    <span class="stat-label">走訪國家</span>
                 </div>
-                <div class="city-content">
-                    <h4 style="color: #0891b2; margin-bottom: 1rem;">戰略定位</h4>
-                    <p>Finnair 基地，北歐與東歐轉機樞紐，機場效率高且轉機體驗優良。</p>
-                    
-                    <div class="highlight-box positive">
-                        <strong>✓ 優勢</strong><br>
-                        • 台灣無直飛，市場空白<br>
-                        • 航權與 Slot 取得難度低<br>
-                        • 轉機前往北歐與東歐便利<br>
-                        • 差異化品牌定位
-                    </div>
-                    
-                    <div class="highlight-box negative">
-                        <strong>✗ 挑戰</strong><br>
-                        • 市場規模較小眾<br>
-                        • 季節性明顯（冬季長）<br>
-                        • 非主流旅遊目的地<br>
-                        • 票價敏感度較高
-                    </div>
-
-                    <div class="key-insight" style="font-size: 0.95rem;">
-                        <strong>旅客視角：</strong>適合文青、深度旅遊族群，但非一般旅客首次歐洲行的首選。是「特色航點」而非「旗艦航點」。
-                    </div>
+                <div class="stat-box">
+                    <span class="stat-number">~20</span>
+                    <span class="stat-label">今年飛行次數</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">候選航點</span>
                 </div>
             </div>
 
-            <div class="city-card">
-                <div class="city-header milan">
-                    <div class="airport-code">MXP</div>
-                    <h3>米蘭</h3>
-                    <p>義大利北部門戶</p>
-                </div>
-                <div class="city-content">
-                    <h4 style="color: #dc2626; margin-bottom: 1rem;">戰略定位</h4>
-                    <p>義北最大城市，通往義大利、瑞士與南歐的主要樞紐，商務與旅遊需求旺盛。</p>
-                    
-                    <div class="highlight-box positive">
-                        <strong>✓ 優勢</strong><br>
-                        • 台灣旅客對義大利需求極高<br>
-                        • 全年旅遊熱度穩定<br>
-                        • 商務客源充足<br>
-                        • 轉機至瑞士、南歐便利
-                    </div>
-                    
-                    <div class="highlight-box negative">
-                        <strong>✗ 挑戰</strong><br>
-                        • 長榮已有直飛競爭<br>
-                        • Slot 取得難度較高<br>
-                        • 需要明確差異化策略<br>
-                        • 市場競爭激烈
-                    </div>
-
-                    <div class="key-insight" style="font-size: 0.95rem;">
-                        <strong>旅客視角：</strong>義大利是台灣旅客的夢想目的地，需求壓倒性強。不論旺淡季都是滿滿人潮，票最好賣。
-                    </div>
-                </div>
-            </div>
-
-            <div class="city-card">
-                <div class="city-header prague">
-                    <div class="airport-code">PRG</div>
-                    <h3>布拉格</h3>
-                    <p>中歐自由行首選</p>
-                </div>
-                <div class="city-content">
-                    <h4 style="color: #d97706; margin-bottom: 1rem;">戰略定位</h4>
-                    <p>熱門中歐旅遊城市，景色優美且物價親民，可延伸至維也納、布達佩斯等地。</p>
-                    
-                    <div class="highlight-box positive">
-                        <strong>✓ 優勢</strong><br>
-                        • 旅遊需求高且穩定<br>
-                        • 航權與 Slot 難度最低<br>
-                        • 華航已驗證市場可行性<br>
-                        • 風險控制最佳
-                    </div>
-                    
-                    <div class="highlight-box negative">
-                        <strong>✗ 挑戰</strong><br>
-                        • 華航已有航班（週 2 班）<br>
-                        • 商務客源相對較少<br>
-                        • 以觀光客為主要客群
-                    </div>
-
-                    <div class="key-insight" style="font-size: 0.95rem;">
-                        <strong>旅客視角：</strong>許多台灣人的「心願清單城市」，浪漫且親民。容易被接受的新航點，穩紮穩打的最佳選擇。
-                    </div>
-                </div>
+            <div class="insight-box">
+                <strong>💡 分析重點：</strong>從實際飛行經驗出發，用國際事務協調員的角度評估三個候選航點的市場潛力與風險。
             </div>
         </div>
 
-        <div class="comparison-table">
-            <h2 style="color: #2d3e5f; margin-bottom: 1.5rem; font-weight: 600;">
-                📊 比較分析表
-            </h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>評估指標</th>
-                        <th>赫爾辛基 HEL</th>
-                        <th>米蘭 MXP</th>
-                        <th>布拉格 PRG</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>台灣直飛現況</strong></td>
-                        <td>❌ 無</td>
-                        <td>✅ 長榮直飛</td>
-                        <td>✅ 華航直飛（週 2 班）</td>
-                    </tr>
-                    <tr>
-                        <td><strong>航權取得難度</strong></td>
-                        <td>🟢 低</td>
-                        <td>🟡 中</td>
-                        <td>🟢 低</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Slot 取得難度</strong></td>
-                        <td>🟢 低</td>
-                        <td>🟡 中</td>
-                        <td>🟢 低</td>
-                    </tr>
-                    <tr>
-                        <td><strong>旅遊市場需求</strong></td>
-                        <td>🟡 中</td>
-                        <td>🟢 高</td>
-                        <td>🟢 高</td>
-                    </tr>
-                    <tr>
-                        <td><strong>商務客源</strong></td>
-                        <td>🟡 低–中</td>
-                        <td>🟢 高</td>
-                        <td>🟡 中</td>
-                    </tr>
-                    <tr>
-                        <td><strong>市場知名度</strong></td>
-                        <td>🟡 中</td>
-                        <td>🟢 很高</td>
-                        <td>🟡 中</td>
-                    </tr>
-                    <tr>
-                        <td><strong>轉機優勢</strong></td>
-                        <td>北歐／東歐</td>
-                        <td>南歐／瑞士／中歐</td>
-                        <td>中歐</td>
-                    </tr>
-                    <tr>
-                        <td><strong>營運風險</strong></td>
-                        <td>季節性、客源小眾</td>
-                        <td>競爭者已在</td>
-                        <td>🟢 風險最低</td>
-                    </tr>
-                    <tr>
-                        <td><strong>旅客族群</strong></td>
-                        <td>文青、深度旅遊</td>
-                        <td>大眾＋商務＋購物</td>
-                        <td>年輕自由行</td>
-                    </tr>
-                    <tr>
-                        <td><strong>首航適合度</strong></td>
-                        <td>🟡 視策略而定</td>
-                        <td>🟢 是，但需差異化</td>
-                        <td>🟢 是，風險最低</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <div class="tabs-container">
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab(0)">🇫🇮 赫爾辛基 HEL</button>
+                <button class="tab" onclick="switchTab(1)">🇮🇹 米蘭 MXP</button>
+                <button class="tab" onclick="switchTab(2)">🇨🇿 布拉格 PRG</button>
+            </div>
 
-        <div class="intro-section">
-            <h2>🎯 競爭者分析</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
-                <div class="highlight-box">
-                    <h3 style="color: #2d3e5f; margin-bottom: 0.5rem;">華航 CI</h3>
-                    <p>• 主力在 FRA、AMS、VIE 這些大型樞紐<br>
-                    • 跟 Air France、KLM 有合作<br>
-                    • 商務客跟轉機市場穩定<br>
-                    • 布拉格航線驗證過市場了</p>
-                </div>
-                <div class="highlight-box">
-                    <h3 style="color: #2d3e5f; margin-bottom: 0.5rem;">長榮 BR</h3>
-                    <p>• 策略性經營 AMS、CDG、VIE<br>
-                    • 已經在飛米蘭 MXP<br>
-                    • 在歐洲旅客中品牌認知度高<br>
-                    • 轉機網絡成熟</p>
+            <div class="tab-content active">
+                <div class="city-detail">
+                    <div class="city-hero" style="background-image: url('https://images.unsplash.com/photo-1509023464722-18d996393ca8?w=1200&h=600&fit=crop');">
+                        <div class="city-badge">
+                            <div class="city-code">HEL</div>
+                            <div class="city-name">赫爾辛基 • 芬蘭</div>
+                        </div>
+                    </div>
+                    <div class="city-body">
+                        <h3 style="color: #2c5f7a; font-size: 1.5rem; margin-bottom: 1rem;">北歐轉機樞紐</h3>
+                        <p style="font-size: 1.05rem; color: #4b5563; margin-bottom: 2rem;">
+                            Finnair 的基地，北歐與東歐轉機樞紐，機場效率高且轉機體驗好。對於想去北歐深度旅遊的人來說是個不錯的選擇。
+                        </p>
+
+                        <div class="pros-cons">
+                            <div class="pros">
+                                <h4>優勢</h4>
+                                <ul>
+                                    <li>台灣沒有直飛，市場空白</li>
+                                    <li>航權跟機場時刻帶相對好拿</li>
+                                    <li>轉機到北歐與東歐很方便</li>
+                                    <li>品牌差異化明確</li>
+                                </ul>
+                            </div>
+                            <div class="cons">
+                                <h4>挑戰</h4>
+                                <ul>
+                                    <li>市場規模比較小</li>
+                                    <li>冬季長，淡旺季差異大</li>
+                                    <li>不是主流旅遊目的地</li>
+                                    <li>票價競爭壓力</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="insight-box">
+                            <strong>我的觀察：</strong>HEL 適合喜歡深度旅遊、文青路線的人，但不是多數台灣人第一次去歐洲會選的地方，再加上所付出的金錢與時間又更多，較小眾。比較像「特色航點」而不是「主力航點」。如果想做差異化，這是個選項，但市場規模要考慮清楚。
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="key-insight" style="margin-top: 1.5rem;">
-                <strong>思考：</strong>星宇如果選倫敦、法蘭克福、巴黎這種超大樞紐，時刻帶跟航權都會很難拿，而且兩家對手都很強。選擇「不是超級樞紐但有市場」的城市，反而是比較合理的做法。
+
+            <div class="tab-content">
+                <div class="city-detail">
+                    <div class="city-hero" style="background-image: url('https://images.unsplash.com/photo-1513581166391-887a96ddeafd?w=1200&h=600&fit=crop');">
+                        <div class="city-badge">
+                            <div class="city-code">MXP</div>
+                            <div class="city-name">米蘭 • 義大利</div>
+                        </div>
+                    </div>
+                    <div class="city-body">
+                        <h3 style="color: #8b4c4c; font-size: 1.5rem; margin-bottom: 1rem;">義大利北部門戶</h3>
+                        <p style="font-size: 1.05rem; color: #4b5563; margin-bottom: 2rem;">
+                            義大利北部最大城市，通往南義、瑞士與南歐的主要樞紐。台灣人超愛義大利，商務跟旅遊需求都很旺。
+                        </p>
+
+                        <div class="pros-cons">
+                            <div class="pros">
+                                <h4>優勢</h4>
+                                <ul>
+                                    <li>台灣人超愛義大利</li>
+                                    <li>全年旅遊熱度都很高</li>
+                                    <li>商務客源充足</li>
+                                    <li>轉機到瑞士、南歐都方便</li>
+                                </ul>
+                            </div>
+                            <div class="cons">
+                                <h4>挑戰</h4>
+                                <ul>
+                                    <li>長榮已經在飛</li>
+                                    <li>機場時刻帶取得難度較高</li>
+                                    <li>需要有差異化策略</li>
+                                    <li>市場競爭激烈</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="insight-box">
+                            <strong>我的觀察：</strong>義大利絕對是台灣人的夢想目的地，需求真的很強。我去義大利時不管淡旺季都是滿滿人潮，票應該最好賣。但長榮已經在飛了，星宇如果要進來，得想清楚怎麼做出差異化。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content">
+                <div class="city-detail">
+                    <div class="city-hero" style="background-image: url('https://images.unsplash.com/photo-1541849546-216549ae216d?w=1200&h=600&fit=crop');">
+                        <div class="city-badge">
+                            <div class="city-code">PRG</div>
+                            <div class="city-name">布拉格 • 捷克</div>
+                        </div>
+                    </div>
+                    <div class="city-body">
+                        <h3 style="color: #8b7355; font-size: 1.5rem; margin-bottom: 1rem;">中歐自由行首選</h3>
+                        <p style="font-size: 1.05rem; color: #4b5563; margin-bottom: 2rem;">
+                            熱門中歐旅遊城市，景色漂亮物價親民，可以延伸到維也納、布達佩斯。很多人的「想去清單」上都有它。
+                        </p>
+
+                        <div class="pros-cons">
+                            <div class="pros">
+                                <h4>優勢</h4>
+                                <ul>
+                                    <li>旅遊需求高且穩定</li>
+                                    <li>航權與時刻帶取得最容易</li>
+                                    <li>風險最低</li>
+                                </ul>
+                            </div>
+                            <div class="cons">
+                                <h4>挑戰</h4>
+                                <ul>
+                                    <li>華航已經在飛（週 2 班）</li>
+                                    <li>商務客源相對少，主要是觀光客</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="insight-box">
+                            <strong>我的觀察：</strong>PRG 是很多台灣人的「想去清單」，浪漫又不貴。華航 1 週 2 班其實市場還有空間，如果星宇想穩紮穩打，這是風險最低的選擇。接受度應該會很高。
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="conclusion-section">
+        <div class="comparison-section">
+            <h2>📊 三個航點比較</h2>
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>評估指標</th>
+                            <th>赫爾辛基 HEL</th>
+                            <th>米蘭 MXP</th>
+                            <th>布拉格 PRG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>台灣直飛現況</strong></td>
+                            <td>❌ 無</td>
+                            <td>✅ 長榮直飛</td>
+                            <td>✅ 華航（1 週 2 班）</td>
+                        </tr>
+                        <tr>
+                            <td><strong>航權取得難度</strong></td>
+                            <td>🟢 低</td>
+                            <td>🟡 中</td>
+                            <td>🟢 低</td>
+                        </tr>
+                        <tr>
+                            <td><strong>時刻帶取得</strong></td>
+                            <td>🟢 容易</td>
+                            <td>🟡 較難</td>
+                            <td>🟢 容易</td>
+                        </tr>
+                        <tr>
+                            <td><strong>旅遊需求</strong></td>
+                            <td>🟡 中</td>
+                            <td>🟢 極高</td>
+                            <td>🟢 高</td>
+                        </tr>
+                        <tr>
+                            <td><strong>商務客源</strong></td>
+                            <td>🟡 中</td>
+                            <td>🟢 高</td>
+                            <td>🟡 中</td>
+                        </tr>
+                        <tr>
+                            <td><strong>轉機優勢</strong></td>
+                            <td>北歐／東歐</td>
+                            <td>南歐／瑞士</td>
+                            <td>中歐</td>
+                        </tr>
+                        <tr>
+                            <td><strong>營運風險</strong></td>
+                            <td>季節性明顯</td>
+                            <td>競爭激烈</td>
+                            <td>🟢 最低</td>
+                        </tr>
+                        <tr>
+                            <td><strong>首航適合度</strong></td>
+                            <td>🟡 看策略</td>
+                            <td>🟢 需差異化</td>
+                            <td>🟢 最穩健</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="toggle-section">
+            <div class="toggle-header" onclick="toggleSection(this)">
+                <h3>🎯 競爭者分析：華航與長榮</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="toggle-content">
+                <div class="toggle-body">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                        <div style="background: #f8f9fa; padding: 2rem; border-radius: 15px; border-left: 4px solid #2d3e5f;">
+                            <h4 style="color: #2d3e5f; margin-bottom: 1rem; font-size: 1.2rem;">華航 CI</h4>
+                            <p>• 主力在 FRA、AMS、VIE 這些大型樞紐<br>
+                            • 跟 Air France、KLM 有合作<br>
+                            • 商務客跟轉機市場穩定<br>
+                            • 布拉格航線驗證過市場了</p>
+                        </div>
+                        <div style="background: #f8f9fa; padding: 2rem; border-radius: 15px; border-left: 4px solid #2d3e5f;">
+                            <h4 style="color: #2d3e5f; margin-bottom: 1rem; font-size: 1.2rem;">長榮 BR</h4>
+                            <p>• 策略性經營 AMS、CDG、VIE<br>
+                            • 已經在飛米蘭 MXP<br>
+                            • 在歐洲旅客中品牌認知度高<br>
+                            • 轉機網絡成熟</p>
+                        </div>
+                    </div>
+                    <div class="insight-box" style="margin-top: 2rem;">
+                        <strong>思考：</strong>星宇如果選倫敦、法蘭克福、巴黎這種超大樞紐，時刻帶跟航權都會很難拿，而且兩家對手都很強。選擇「不是超級樞紐但有市場」的城市，反而是比較合理的做法。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="toggle-section">
+            <div class="toggle-header" onclick="toggleSection(this)">
+                <h3>🎓 這個專案展現的能力</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="toggle-content">
+                <div class="toggle-body">
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <strong style="color: #2d3e5f;">📊 市場調查與分析</strong><br>
+                            <span style="color: #6b7280;">多維度比較、競爭者評估、需求洞察</span>
+                        </div>
+                        <div class="skill-item">
+                            <strong style="color: #2d3e5f;">🌐 國際事務思維</strong><br>
+                            <span style="color: #6b7280;">航權評估、航線規劃、跨國市場理解</span>
+                        </div>
+                        <div class="skill-item">
+                            <strong style="color: #2d3e5f;">📝 報告撰寫</strong><br>
+                            <span style="color: #6b7280;">結構化分析、清晰論述、專業呈現</span>
+                        </div>
+                        <div class="skill-item">
+                            <strong style="color: #2d3e5f;">🎯 策略思考</strong><br>
+                            <span style="color: #6b7280;">風險評估、差異化策略、多方案比較</span>
+                        </div>
+                        <div class="skill-item">
+                            <strong style="color: #2d3e5f;">✈️ 航空產業理解</strong><br>
+                            <span style="color: #6b7280;">實際飛行經驗、轉機觀察、旅客行為</span>
+                        </div>
+                        <div class="skill-item">
+                            <strong style="color: #2d3e5f;">🔄 整合能力</strong><br>
+                            <span style="color: #6b7280;">整合旅客視角與商業邏輯</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="conclusion-card">
             <h2>💡 我的看法</h2>
-            <p style="font-size: 1.05rem; margin-bottom: 2rem;">三個城市代表三種不同方向，沒有絕對的對錯。重點是星宇想要什麼樣的品牌定位，以及能承受多少風險：</p>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;">三個城市代表三種不同方向，沒有絕對的對錯。重點是想要什麼樣的品牌定位以及能承受多少風險：</p>
             
-            <div class="recommendation-grid">
-                <div class="recommendation-card">
+            <div class="strategy-cards">
+                <div class="strategy-card">
                     <h3>🎯 米蘭 MXP</h3>
-                    <p><strong>話題性最高</strong></p>
-                    <p>市場最大、票最好賣，也最容易變成「爆量航點」。適合想快速打響知名度。</p>
-                </div>
+                    <p style="margin-bottom: 1rem;"><strong>市場規模與商務基石</strong></p>
+                    <p>具備**觀光與商務雙重穩定市場**，能快速創造載客量與營收。適合追求**快速建立歐洲市場基礎**，並能承受中等 Slot 難度與市場競爭的策略。</p>
+        </div>
                 
-                <div class="recommendation-card">
+                <div class="strategy-card">
                     <h3>✅ 布拉格 PRG</h3>
-                    <p><strong>風險最低</strong></p>
-                    <p>穩定、旅客接受度高。華航已經驗證過市場了，是穩紮穩打的選擇。</p>
-                </div>
+                    <p style="margin-bottom: 1rem;"><strong>風險低與營運穩定</strong></p>
+                    <p>航權與 Slot 取得難度最低，市場穩定且旅客接受度高。是**降低首航風險、確保航線初期營運穩定性**的最優選擇，適合穩健推進歐洲佈局的策略。</p>
+        </div>
                 
-                <div class="recommendation-card">
+                <div class="strategy-card">
                     <h3>🌟 赫爾辛基 HEL</h3>
-                    <p><strong>差異化</strong></p>
-                    <p>有特色，但市場規模比較小。適合想打造「精品航線」形象。</p>
-                </div>
+                    <p style="margin-bottom: 1rem;"><strong>差異化與轉運潛力</strong></p>
+                    <p>轉機網絡強大，具備與北歐航司**合作的潛在優勢**。適合追求**精品化、差異化**的品牌形象，並將歐洲航線作為**強化亞洲轉運樞紐**功能的策略。 </p>
+        </div>
             </div>
 
-            <div style="background: rgba(255,255,255,0.15); padding: 1.5rem; border-radius: 10px; margin-top: 2rem;">
+            <div style="background: rgba(255,255,255,0.15); padding: 2rem; border-radius: 15px; margin-top: 2rem;">
                 <h3 style="color: #c9a961; margin-bottom: 1rem;">航空公司實際會考慮的因素</h3>
                 <p>• 航權談判進度跟雙邊協議<br>
                 • 機場時刻帶好不好拿<br>
@@ -614,50 +867,54 @@
                 • 地面支援跟維修能力</p>
             </div>
 
-            <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(201, 169, 97, 0.2); border-radius: 10px;">
+            <div style="margin-top: 2rem; padding: 2rem; background: rgba(201, 169, 97, 0.2); border-radius: 15px;">
                 <h3 style="color: #c9a961; margin-bottom: 0.5rem;">為什麼做這個分析</h3>
                 <p style="font-size: 1.05rem;">這份分析的目的不是預測星宇會選哪個，而是想練習用國際事務的角度看航點評估，同時把我實際飛行的經驗融入進來。</p>
-            </div>
-        </div>
-
-        <div class="intro-section">
-            <h2>🎓 這個專案展現的能力</h2>
-            <p>透過這個分析，展現幾個跟 International Affairs Coordinator 相關的能力：</p>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
-                <div class="highlight-box">
-                    <strong>📊 市場調查與分析</strong><br>
-                    多維度比較、競爭者評估、需求洞察
-                </div>
-                <div class="highlight-box">
-                    <strong>🌐 國際事務思維</strong><br>
-                    航權評估、航線規劃、跨國市場理解
-                </div>
-                <div class="highlight-box">
-                    <strong>📝 報告撰寫</strong><br>
-                    結構化分析、清晰論述、專業呈現
-                </div>
-                <div class="highlight-box">
-                    <strong>🎯 策略思考</strong><br>
-                    風險評估、差異化策略、多方案比較
-                </div>
-                <div class="highlight-box">
-                    <strong>✈️ 航空產業理解</strong><br>
-                    實際飛行經驗、轉機觀察、旅客行為
-                </div>
-                <div class="highlight-box">
-                    <strong>🔄 整合能力</strong><br>
-                    整合旅客視角與商業邏輯
-                </div>
             </div>
         </div>
     </div>
 
     <div class="footer">
-        <p style="font-size: 1.1rem; margin-bottom: 0.5rem;"><strong>International Affairs Coordinator Portfolio</strong></p>
+        <p style="font-size: 1.2rem; margin-bottom: 0.5rem;"><strong>International Affairs Coordinator Portfolio</strong></p>
         <p>應徵職位：星宇航空 International Affairs Coordinator</p>
-        <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+        <p style="margin-top: 1rem; font-size: 0.95rem; opacity: 0.8;">
             結合旅客經驗與航空策略思維的分析專案
         </p>
     </div>
+
+    <script>
+        function switchTab(index) {
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            contents.forEach(content => content.classList.remove('active'));
+            
+            tabs[index].classList.add('active');
+            contents[index].classList.add('active');
+        }
+
+        function toggleSection(header) {
+            const section = header.parentElement;
+            section.classList.toggle('open');
+        }
+
+        // 加入滑動效果
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.intro-card, .comparison-section, .toggle-section, .conclusion-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
